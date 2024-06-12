@@ -1,4 +1,4 @@
-package database;
+package crudSemInternet.infrasctuture;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

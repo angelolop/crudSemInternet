@@ -1,6 +1,6 @@
-package database.model;
+package crudSemInternet.domain;
 
-public class UsuarioModel {
+public class Usuario {
 
     private int id;
     private String usuario;
