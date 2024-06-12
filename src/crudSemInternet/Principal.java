@@ -1,6 +1,6 @@
 package crudSemInternet;
 
-import crudSemInternet.application.service.UsuarioService;
+import crudSemInternet.application.service.UserService;
 import crudSemInternet.infrasctuture.ConnectionFactory;
 
 import java.sql.Connection;
@@ -9,17 +9,17 @@ import java.sql.SQLException;
 public class Principal {
     public static void main(String[] args) {
         try {
-            Connection conexao = ConnectionFactory.getConnection
+            Connection connection = ConnectionFactory.getConnection
                     ("localhost", "5432", "usuarios", "postgres", "mysecretpassword");
-            if (conexao != null){
-                System.out.println("conectado");
-                UsuarioService usuarioService = new UsuarioService(conexao);
-                System.out.println(usuarioService.deleteById(6));
-                System.out.println(usuarioService.updateById(3));
-                usuarioService.selectAll().forEach(System.out::println);
-                conexao.close();
+            if (connection != null){
+                System.out.println("Connected");
+                UserService userService = new UserService(connection);
+                System.out.println(userService.deleteById(6));
+                System.out.println(userService.updateById(3, "update"));
+                userService.selectAll().forEach(System.out::println);
+                connection.close();
             } else {
-                System.out.println("falha");
+                System.out.println("Error");
             }
         } catch (SQLException e) {
             e.printStackTrace();
